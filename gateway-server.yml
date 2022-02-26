@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      discovery.locator: #自动映射url到注册中心的服务 http://localhost:8072/organization-service/v1/organization/958aa1bf-18dc-405c-b84a-b69f04d98d4f
+        enabled: true #organization-service代表服务id
+        lowerCaseServiceId: true
+      routes: #手动路由
+      - id: organization-service
+        uri: lb://organization-service
+        predicates:
+        - Path=/organization/**
+        filters:
+        - RewritePath=/organization/(?<path>.*), /$\{path}
