@@ -1,0 +1,8 @@
+eureka:
+    instance:
+        preferIpAddress:true
+    client:
+        registerWithEureka:true
+        fetchRegistry:true
+        serviceUrl:
+            defaultZone:http://182.61.45.76:8070/eureka/
